@@ -1,0 +1,55 @@
+## .NET / C# Build Artifacts
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+TestResults/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.launch
+*.pidb
+*.booproj
+*.svclog
+
+## Visual Studio & JetBrains & VS Code
+.vs/
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.resharper
+*.DotSettings.user
+
+## OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+## Temporary files & caches
+*.tmp
+*.bak
+*.swp
+*~
+*.lock
+
+## Node / Frontend (if any tooling is ever added)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+## Secrets & Environment Overrides
+*.env
+*.env.*
+!*.env.example
+appsettings.*.local.json

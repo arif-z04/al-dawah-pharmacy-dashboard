@@ -1,0 +1,30 @@
+# Auto detect text files and perform LF normalization on checkout
+* text=auto
+
+# C# and .NET
+*.cs text diff=csharp
+*.sln text eol=crlf
+*.slnx text eol=crlf
+*.csproj text eol=crlf
+*.props text eol=crlf
+*.json text
+
+# Database & Shell Scripts (MUST use LF for Docker/Linux containers)
+*.sql text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Web & Documentation
+*.md text
+*.html text
+*.css text
+*.js text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

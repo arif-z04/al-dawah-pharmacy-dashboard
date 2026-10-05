@@ -78,10 +78,17 @@ app.UseAuthorization();
 app.MapControllers();
 
 // 7. Serve Frontend static files if available
-var frontendPath = Path.GetFullPath(Path.Combine(app.Environment.ContentRootPath, "..", "..", "Frontend"));
-if (Directory.Exists(frontendPath))
+var wwwrootPath = Path.Combine(app.Environment.ContentRootPath, "wwwroot");
+var devFrontendPath = Path.GetFullPath(Path.Combine(app.Environment.ContentRootPath, "..", "..", "Frontend"));
+
+if (Directory.Exists(wwwrootPath) && File.Exists(Path.Combine(wwwrootPath, "index.html")))
 {
-    var fileProvider = new PhysicalFileProvider(frontendPath);
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+}
+else if (Directory.Exists(devFrontendPath))
+{
+    var fileProvider = new PhysicalFileProvider(devFrontendPath);
     app.UseDefaultFiles(new DefaultFilesOptions
     {
         FileProvider = fileProvider,

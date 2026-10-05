@@ -19,6 +19,7 @@ This documentation suite is engineered for everyone: from an **absolute beginner
 | **07** | [Comprehensive Windows Setup Guide](file:///home/noir/Work/AL-Dawah_Pharma/documentation/07_setup_guide_windows.md) | Step-by-step setup on Windows 10/11 using Docker Desktop, WSL2, native .NET, PowerShell, and Oracle DB. | Windows Users, System Admins |
 | **08** | [Troubleshooting, Error Reference & FAQ](file:///home/noir/Work/AL-Dawah_Pharma/documentation/08_troubleshooting_and_faq.md) | Exhaustive troubleshooting catalog for Oracle ORA errors, .NET exceptions, CORS, network ports, and FAQs. | Everyone |
 | **09** | [Complete Annotated Source Code Reference](file:///home/noir/Work/AL-Dawah_Pharma/documentation/09_complete_source_code_annotated_reference.md) | Complete code listings with line-by-line educational commentary. | Code Reviewers, Students |
+| **10** | [Complete Hosting & Deployment Guide](file:///home/noir/Work/AL-Dawah_Pharma/documentation/hosting-guide.md) | Docker Compose, Linux VPS with Nginx SSL, Local Pharmacy LAN Intranet, and Security Hardening. | DevOps, System Admins, Store Owners |
 
 ---
 

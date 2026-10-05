@@ -1,0 +1,48 @@
+services:
+  # ---------------------------------------------------------------------------
+  # 1. Oracle Database 23c / 26ai Free
+  # ---------------------------------------------------------------------------
+  oracle-db:
+    image: container-registry.oracle.com/database/free:latest
+    container_name: aldawah-oracle
+    restart: unless-stopped
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PASSWORD=SecretPassword2026#
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+      - ./sql:/docker-entrypoint-initdb.d/startup:ro
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM DUAL;' | sqlplus -S system/SecretPassword2026#@localhost:1521/FREE"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
+
+  # ---------------------------------------------------------------------------
+  # 2. Al-Dawah Pharma Full-Stack Web Application (ASP.NET Core + Frontend SPA)
+  # ---------------------------------------------------------------------------
+  web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aldawah-app
+    restart: unless-stopped
+    depends_on:
+      oracle-db:
+        condition: service_healthy
+    ports:
+      - "5091:5091"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:5091
+      - ConnectionStrings__OracleDb=User Id=C##PHARMACY_APP;Password=PharmacyApp2026#;Data Source=oracle-db:1521/FREE;
+      - Jwt__Key=AlDawahPharmaSecretSuperKey2026!MustBe32BytesLongMin
+      - Jwt__Issuer=AlDawahPharmaApi
+      - Jwt__Audience=AlDawahPharmaClient
+      - Jwt__ExpiryMinutes=720
+
+volumes:
+  oracle-data:
+    driver: local
